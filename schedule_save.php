@@ -19,12 +19,10 @@ if ($vars['opt']){
       $rs = mysql_query($sql, $conn);
     }
   }else{
-    $kstime  = implode('-',array($vars['year1'], $vars['month1'], $vars['day1']));
-    $kstime .= ' ';
-    $kstime .= implode(':',array($vars['hour1'], $vars['minute1']));
-    $ketime  = implode('-',array($vars['year2'], $vars['month2'], $vars['day2']));
-    $ketime .= ' ';
-    $ketime .= implode(':',array($vars['hour2'], $vars['minute2']));
+    $kstime  = $vars['year1'] .'-'. $vars['month1'] .'-'. $vars['day1'] . ' ';
+    $kstime .= $vars['hour1'] .':'. $vars['minute1'];
+    $ketime  = $vars['year2'] .'-'. $vars['month2'] .'-'. $vars['day2'] . ' ';
+    $ketime .= $vars['hour2'] .':'. $vars['minute2'];
     $kid    = $vars['kid'];
     $title  = $vars['title'];
     $place  = $vars['place'];

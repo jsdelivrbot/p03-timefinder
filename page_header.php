@@ -30,37 +30,34 @@ date_default_timezone_set('Asia/Tokyo');
     </div>
     <!-- /.navbar-header -->
    <div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-      <li><a href="index.php">ホーム</a></li>
-   <?php if(isset($_SESSION['userid'])):  ?>
-      　<li class="dropdown">
+    <?php if(isset($_SESSION['userid'])):  ?>
+     <ul class="nav navbar-nav">
+      <li><a href="index.php">ホーム</a></li> 
+      <li class="dropdown">
         <a href="index.php" class="dropdown-toggle" data-toggle="dropdown">予定管理<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="private_schedule_entry.php">予定登録</a></li>
-          <li><a href="share_setting.php">共有設定</a></li>
-          <li><a href="share_schedule.php">共有確認</a></li>
+          <li><a href="schedule_edit.php">新規登録</a></li>
+          <li><a href="schedule_config.php">設定</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href="calendar.php" class="dropdown-toggle" data-toggle="dropdown">カレンダー管理<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="private_schedule_entry.php">新規登録</a></li>
-          <li><a href="share_setting.php">設定</a></li>
+          <li><a href="calendar_edit.php">新規登録</a></li>
+          <li><a href="calendar_config.php">共有設定</a></li>
         </ul>
       </li>
       <li><a href="sparetime.php">空き時間検索</a></li>
      </ul>
-   <?php endif; ?>
-    <ul class="nav navbar-nav navbar-right">  
-   <?php
-    if(isset($_SESSION['userid'])){
-      echo '<li><a>' . $_SESSION['UNAME'] . '様</a></li>';
-      echo '<li><a href="logout.php">ログアウト</a></li>';
-    }else{
-      echo '<li><a href="login.php">ログイン</a></li>';
-    }
-  ?>
-    </ul>
+     <ul class="nav navbar-nav navbar-right">  
+       <li><a><?=$_SESSION['username'] ?>様</a></li>
+       <li><a href="logout.php">ログアウト</a></li>
+     </ul>
+    <?php else: ?>
+     <ul class="nav navbar-nav navbar-right">
+      <li><a href="login.php">ログイン</a></li>
+     </ul>
+    <?php endif; ?>
   </div>
 </div>
 </div>

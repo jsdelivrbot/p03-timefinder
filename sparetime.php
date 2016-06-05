@@ -24,11 +24,11 @@ $(function () {
 <?php
 	if (!isset($_POST['member_ready']) and !isset($_POST['query_ready'])) : // step 1: select members 
 ?>
-<h3><span class="text-danger">Step 1</span>: メンバー選択</h3>
 <form class="form-horizontal" action="sparetime.php" method="post">
 <input type="hidden" name="member_ready">
 <div class="form-group">
-<div class="col-sm-offset-2 col-sm-10">
+<label class="control-label col-sm-2">メンバー選択</label>
+<div class="col-sm-10">
 <?php	
 	$sql = "SELECT * FROM tb_user WHERE NOT userid='admin' ";
 	$rs = mysql_query($sql, $conn);
@@ -51,7 +51,6 @@ $(function () {
 <?php
 	elseif (!isset($_POST['query_ready'])) :  // step 2: query condition
 ?>
-<h3><span class="text-danger">Step 2</span>: 検索条件入力</h3>
 <form class="form-horizontal" action="sparetime.php" method="post">
 <input type="hidden" name="query_ready">
 <div class="form-group">
@@ -68,11 +67,11 @@ $(function () {
   </div>
 </div>
 <div class="form-group">
-  <label class="control-label col-sm-2"">空き時間:</label>
+  <label class="control-label col-sm-2">空き時間:</label>
   <div class="col-sm-10">
   <input type="number" min="1" class="form-control" name="length" value="<?=$length ?>"/>
   <?php
-  	$units = array('分','時間',/*'終日'*/);
+  	$units = array('分','時間','終日');
   	for ($i=0; $i < count($units); $i++){
       $checked = ($i==$unit) ? 'checked' : '';
   		echo '<label class="radio-inline">';
